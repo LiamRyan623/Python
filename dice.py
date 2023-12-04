@@ -1,22 +1,49 @@
 import random
 
-print("How many dice would you like to roll?")
+running = True
 
-### Validate Input
-while True:
-    try:
-        numberPicked = int(input("Type how many d20's you'd like to roll (between 1 and 5): "))
-        if(numberPicked > 0 and numberPicked < 6):
-            break
-        else:
-            print("Invalid input. Try again.")
-    except:
-        print("Please provide a number.")
 
-def rollDice(amountOfDice):
-            possibleFaces = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-            for die in range(amountOfDice):
-                roll = random.choice(possibleFaces)
-                print("Die ", die + 1, ": ", roll)
+## Starting with a while loop
+while running:
+    rolls = "a"
+    sides = "a"
+    total = 0
 
-rollDice(numberPicked)
+    while sides.isnumeric() == False:
+        sides = input("How many sides does this die have? ")
+        if sides.isnumeric() == False:
+            print("You must enter a number.")
+            continue
+        
+    sides = int(sides)
+    if sides < 2:
+        print("You much have a minimum of 2 sides")
+        continue
+
+
+    while rolls.isnumeric() == False:
+        rolls = input("How many dice? ")
+        if rolls.isnumeric() == False:
+            print("You must enter a number.")
+            continue
+        
+        rolls = int(rolls)
+        if rolls < 1:
+            print("You must roll at least 1 die.")
+            continue
+
+
+
+    for x in range(rolls):
+        roll = random.randint(1,sides)
+        total += roll
+        print (x+1, ": ", roll)
+    print("TOTAL: ", total)
+    print("\n")
+
+    rollAgain = input("Roll again (Y/N)? ")
+
+    if rollAgain.upper() == "N":
+        break
+print("End Program")
+
