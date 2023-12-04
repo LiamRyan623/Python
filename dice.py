@@ -26,12 +26,10 @@ while running:
         if rolls.isnumeric() == False:
             print("You must enter a number.")
             continue
-        
-        rolls = int(rolls)
         if rolls < 1:
             print("You must roll at least 1 die.")
             continue
-
+    rolls = int(rolls)
 
 
     for x in range(rolls):
